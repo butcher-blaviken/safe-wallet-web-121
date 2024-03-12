@@ -4,7 +4,8 @@ WORKDIR /app
 COPY . .
 RUN npm i -g sharp --legacy-peer-deps
 # install deps
-RUN yarn install --frozen-lockfile
+RUN yarn cache clean
+RUN yarn install --frozen-lockfile  --network-concurrency 1
 RUN yarn after-install
 
 ENV NODE_ENV production
