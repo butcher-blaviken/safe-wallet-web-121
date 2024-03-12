@@ -2,7 +2,7 @@ FROM node:18-alpine
 RUN apk add --no-cache libc6-compat git python3 py3-pip make g++ libusb-dev eudev-dev linux-headers
 WORKDIR /app
 COPY . .
-
+RUN npm i -g sharp --legacy-peer-deps
 # install deps
 RUN yarn install --frozen-lockfile
 RUN yarn after-install

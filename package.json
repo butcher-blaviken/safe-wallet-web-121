@@ -17,7 +17,7 @@
     "test:coverage": "yarn test --coverage --watchAll=false",
     "cmp": "./scripts/cmp.sh",
     "routes": "node scripts/generate-routes.js > src/config/routes.ts && prettier -w src/config/routes.ts && cat src/config/routes.ts",
-    "css-vars": "ts-node-esm ./scripts/css-vars.ts > ./src/styles/vars.css && prettier -w src/styles/vars.css",
+    "css-vars": "node --loader ts-node/esm ./scripts/css-vars.ts > ./src/styles/vars.css && prettier -w src/styles/vars.css",
     "generate-types": "typechain --target ethers-v5 --out-dir src/types/contracts ./node_modules/@safe-global/safe-deployments/dist/assets/**/*.json ./node_modules/@safe-global/safe-modules-deployments/dist/assets/**/*.json ./node_modules/@openzeppelin/contracts/build/contracts/ERC20.json ./node_modules/@openzeppelin/contracts/build/contracts/ERC721.json",
     "after-install": "yarn generate-types && yarn css-vars",
     "postinstall": "yarn after-install",
@@ -33,7 +33,9 @@
     "node": ">=16"
   },
   "resolutions": {
-    "@web3-onboard/trezor/**/protobufjs": "^7.2.4"
+    "@web3-onboard/trezor/**/protobufjs": "^7.2.4",
+    "@safe-global/safe-core-sdk/**/@safe-global/safe-deployments": "https://github.com/butcher-blaviken/safe-deployments.git#mapo",
+    "@safe-global/safe-core-sdk-types/**/@safe-global/safe-deployments": "https://github.com/butcher-blaviken/safe-deployments.git#mapo"
   },
   "dependencies": {
     "@date-io/date-fns": "^2.15.0",
@@ -49,7 +51,7 @@
     "@safe-global/safe-apps-sdk": "^8.1.0",
     "@safe-global/safe-core-sdk": "^3.3.5",
     "@safe-global/safe-core-sdk-utils": "^1.7.4",
-    "@safe-global/safe-deployments": "1.25.0",
+    "@safe-global/safe-deployments": "https://github.com/butcher-blaviken/safe-deployments.git#mapo",
     "@safe-global/safe-ethers-lib": "^1.9.4",
     "@safe-global/safe-gateway-typescript-sdk": "^3.12.0",
     "@safe-global/safe-modules-deployments": "^1.0.0",
@@ -88,7 +90,8 @@
     "react-papaparse": "^4.0.2",
     "react-qr-reader": "2.2.1",
     "react-redux": "^8.0.5",
-    "semver": "^7.5.2"
+    "semver": "^7.5.2",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.1.0",

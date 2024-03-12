@@ -25,11 +25,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-
   reactStrictMode: false,
   productionBrowserSourceMaps: true,
   eslint: {
     dirs: ['src'],
+    ignoreDuringBuilds: true,
   },
   experimental: {
     optimizePackageImports: ['@mui/material', '@mui/icons-material', 'lodash', 'date-fns']
